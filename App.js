@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Button, StatusBar } from 'react-native';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Setting from './pages/Setting'
@@ -60,7 +60,7 @@ export default function App() {
 
   return (
     
-    <View>
+    <View style={styles.tabs}>
       <NavigationContainer>
       <TabActions />
     </NavigationContainer>
@@ -71,12 +71,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   nome :{
     paddingBottom: '15px',
     alignItems: 'center',
@@ -125,5 +119,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: 'black7',
+  },
+  tabs:{
+    flex: 1,
   },
 });

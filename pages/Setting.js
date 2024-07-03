@@ -10,12 +10,6 @@ export default function Setting() {
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   nome :{
     paddingBottom: '15px',
     alignItems: 'center',
@@ -64,5 +58,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: 'black7',
+    justifyContent: 'center',
   },
 });
