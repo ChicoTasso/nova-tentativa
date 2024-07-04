@@ -1,12 +1,56 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { Text, View, StyleSheet, Button } from 'react-native';
+import { ListItem, Icon, SearchBar } from '@rneui/themed'
+
+const list = [
+  {
+    title: 'Appointments',
+    icon: 'av-timer'
+  },
+  {
+    title: 'Trips',
+    icon: 'flight-takeoff'
+  },
+
+]
 
 
 export default function Setting() {
+  const [search, setSearch] = useState("");
+
+  const updateSearch = (search) => {
+    setSearch(search);
+  };
+  
+  
+  
   return (
-    <View>
-      <Text>Settings!</Text>
-    </View>
+
+<View>
+<SearchBar
+      placeholder="Type Here..."
+      onChangeText={updateSearch}
+      value={search}
+      inputContainerStyle={{ backgroundColor: 'white'}}
+      containerStyle={{ background : 'transparent',
+        borderTopWidth:0,
+        borderBottomWidth:0
+      }}
+    />
+  {
+    list.map((item, i) => (
+      <ListItem key={i} bottomDivider>
+        <Icon name={item.icon} />
+        <ListItem.Content>
+          <ListItem.Title>{item.title}</ListItem.Title>
+        </ListItem.Content>
+        <ListItem.Chevron />
+      </ListItem>
+    ))
+  }
+</View>
+
   );
 }
 const styles = StyleSheet.create({

@@ -1,29 +1,35 @@
 import * as React from 'react';
 import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Login from './pages/Login'
-import HomeScreen from './pages/HomeScreen'
-import Recovery from './pages/passwordrecovery';
 
-
-const Stack = createNativeStackNavigator();
-
-export default function App() {
+export default function HomeScreen({ navigation }) {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreem">
-        <Stack.Screen name="Login" component={HomeScreen} />
-        <Stack.Screen name="App" component={Login} />
-        <Stack.Screen name="Recovery" component={Recovery} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View style={styles.container}>
+      <Text style={styles.title}>Login App</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        keyboardType="default"
+        placeholderTextColor="#888"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        keyboardType="numeric"
+        placeholderTextColor="#888"
+        secureTextEntry={true}
+      />
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('App')}>
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+      <Text style={styles.recovery} onPress={() => navigation.navigate('Recovery')}>Esqueceu a Senha?</Text>
+    </View>
   );
 }
 
-
-
 const styles = StyleSheet.create({
+  recovery : {
+    marginTop: 10,
+  },
   container: {
     flex: 1,
     backgroundColor: '#f0f0f0',
